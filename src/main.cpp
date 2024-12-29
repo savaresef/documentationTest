@@ -2,7 +2,7 @@
 
 /**
  * @brief multiply the input number per 2 and return it 
- * @param int number to multiply
+ * @param number to multiply
  * @return The number multiplied per 2
  */
 int printNumber(int number);
