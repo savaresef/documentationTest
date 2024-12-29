@@ -1,0 +1,3 @@
+/Users/francesco/Developer/documentationTest/build/CMakeFiles/rebuild_cache.dir
+/Users/francesco/Developer/documentationTest/build/CMakeFiles/edit_cache.dir
+/Users/francesco/Developer/documentationTest/build/CMakeFiles/documentationTest.dir
