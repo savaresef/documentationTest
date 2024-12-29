@@ -1,41 +1,33 @@
 
-# This is a basic workflow to help you get started with Actions
-
 name: Doxygen Action
-
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
+  
 on:
   push:
     branches: [ main ]
 
-
-  
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
-        
+    # Check out the repository
+    - uses: actions/checkout@v3
+
+    # Generate documentation with Doxygen
     - name: Doxygen Action
-      uses: mattnotmitt/doxygen-action@v1.1.0
+      uses: mattnotmitt/doxygen-action@v1.3.0
       with:
-        # Path to Doxyfile
-        doxyfile-path: "./Doxyfile" # default is ./Doxyfile
-        # Working directory
-        working-directory: "." # default is .
-    
+        doxyfile-path: "./Doxyfile"
+        working-directory: "."
+
+    # Debug: List files to verify Doxygen output
+    - name: List files after Doxygen run
+      run: ls -R
+
+    # Deploy documentation to gh-pages
     - name: Deploy
-      uses: peaceiris/actions-gh-pages@v3
+      uses: peaceiris/actions-gh-pages@v4
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        # Default Doxyfile build documentation to html directory. 
-        # Change the directory if changes in Doxyfile
-        publish_dir: ./html
+        publish_dir: ./html # Match OUTPUT_DIRECTORY in Doxyfile
         destination_branch: gh-pages
