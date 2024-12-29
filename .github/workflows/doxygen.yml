@@ -3,7 +3,7 @@ name: Generate and Publish Doxygen Docs
 on:
   push:
     branches:
-      - main  # Adjust if your default branch is different
+      - gh-pages  # Adjust if your default branch is different
 
 jobs:
   build:
