@@ -2,7 +2,7 @@
 
 /**
  * This function is used as a test function
- * Extra test
+ * Super Extra test
  * @brief multiply the input number per 2 and return it 
  * @param number to multiply
  * @return The number multiplied per 2
