@@ -3,7 +3,7 @@ name: Generate and Publish Doxygen Docs
 on:
   push:
     branches:
-      - main  # Adjust if your default branch is different
+      - main  # Trigger this action only when pushing to 'main' branch
 
 jobs:
   build:
@@ -13,19 +13,24 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Set up Python
+    - name: Set up Python (if required by Doxygen setup)
       uses: actions/setup-python@v4
       with:
         python-version: '3.x'
 
-    - name: Install Doxygen
-      run: sudo apt-get install -y doxygen graphviz
+    - name: Install Doxygen and Graphviz
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y doxygen graphviz
 
     - name: Generate Doxygen documentation
-      run: doxygen Doxyfile
+      run: doxygen Doxyfile  # Ensure your Doxyfile is properly configured
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./docs/html
+        publish_dir: ./docs/html  # Path to the generated docs
+        target_branch: gh-pages  # Deploy to the 'gh-pages' branch
+        keep_files: true  # Retain the existing files on gh-pages branch
+        fqdn: false  # Optional: Set to false to prevent using the FQDN as part of the URL
