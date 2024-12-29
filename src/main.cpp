@@ -9,7 +9,7 @@
  */
 int printNumber(int number);
 int main() {
-    std::cout << "Enter a Test num:" << std::endl;
+    std::cout << "Enter a Test number:" << std::endl;
     int num;
     std::cin >> num;
     std::cout << printNumber(num) <<std::endl;
