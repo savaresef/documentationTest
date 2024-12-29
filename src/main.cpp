@@ -3,7 +3,7 @@
 /**
  * This function is used as a test function
  * Super Super Extra Final test
- * @brief multiply the input number per 2 and return it 
+ * @brief multiply the input number per 3 and return it 
  * @param number to multiply
  * @return The number multiplied per 2
  */
@@ -18,5 +18,5 @@ int main() {
 
 int printNumber(int number)
 {
-    return number * 2;
+    return number * 3;
 }
